@@ -12,10 +12,15 @@ export class ProfilesService {
     private readonly profilesRepository:
     Repository<Profile>,
   ){}
+
   async create(id:string, setupProfileDTO:SetupProfileDTO):Promise<Profile | null>{
     const newProfile = this.profilesRepository.create({user_id:id});
     this.profilesRepository.merge(newProfile,setupProfileDTO)
     return await this.profilesRepository.save(newProfile);
   } 
+
+  async getProfile(id:string){
+    return await this.profilesRepository.findOneBy({user_id:id})
+  }
 
 }
