@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ExerciseDiary } from "src/exercise-diary/entity/exercise-diary.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'users'})
 export class User{
@@ -20,5 +21,7 @@ export class User{
   @Column({type: 'text', nullable: true})
   subject_identifier!: string | null;
 
+  @OneToMany(()=> ExerciseDiary, (exerciseDiary)=>exerciseDiary.user)
+  exerciseDiaries!: ExerciseDiary[]
 
 }
