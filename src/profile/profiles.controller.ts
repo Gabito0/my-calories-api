@@ -1,6 +1,8 @@
-import { Body, Controller, Param, Put, UseGuards, Request, Post, Get } from '@nestjs/common';
+import { Body, Controller, Param, Put, UseGuards, Request, Post, Get, Patch } from '@nestjs/common';
 import { ProfilesService } from './profiles.service';
 import { SetupProfileDTO } from './dto/setup-profile.dto';
+import path from 'path';
+import { UpdateProfileDTO } from './dto/update-profile.dto';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -16,4 +18,9 @@ export class ProfilesController {
   getUserProfile(@Request() req){
     return this.profilesService.getProfile(req.user.user_id)
   }
-}
+
+  @Patch()
+  UpdateUserProfile(@Request() req, @Body() updateProfileDTP: UpdateProfileDTO){
+    return this.profilesService.updateProfile(req.user.user_id,updateProfileDTP)
+  }
+} 
