@@ -9,6 +9,9 @@ export class ExerciseDiary {
   @JoinColumn({name: 'user_id'})
   user!:User
 
+  @Column()
+  user_id!:string;
+
   @Column({type:'date'})
   start_time!:Date;
 

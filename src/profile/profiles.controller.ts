@@ -8,8 +8,8 @@ export class ProfilesController {
   constructor(private profilesService: ProfilesService){}
 
   @Post()
-  createUserProfile(@Request() req, @Body() setupProfileDto: SetupProfileDTO){
-    return this.profilesService.create(req.user.userId,setupProfileDto);
+  createUserProfile(@Request() req, @Body() setupProfileDTO: SetupProfileDTO){
+    return this.profilesService.create(req.user.userId,setupProfileDTO);
   }
    
 
@@ -19,7 +19,7 @@ export class ProfilesController {
   }
 
   @Patch()
-  UpdateUserProfile(@Request() req, @Body() updateProfileDTP: UpdateProfileDTO){
-    return this.profilesService.updateProfile(req.user.user_id,updateProfileDTP)
+  UpdateUserProfile(@Request() req, @Body() updateProfileDTO: UpdateProfileDTO){
+    return this.profilesService.updateProfile(req.user.user_id,updateProfileDTO)
   }
 } 
