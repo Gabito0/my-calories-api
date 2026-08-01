@@ -5,12 +5,7 @@ export class CreateExerciseDiaryDTO{
   @Type(()=> Date)
   @IsDate()
   @IsNotEmpty()
-  start_time!: Date;
-
-  @Type(()=> Date)
-  @IsDate()
-  @IsNotEmpty()
-  end_time!:Date;
+  date_entered!: Date;
 
   @IsString()
   @IsOptional()

@@ -24,15 +24,10 @@ export class ExerciseDiaryService {
   }
 
   
-  async get(id:string, time:Date | null): Promise<ExerciseDiary | undefined>{
-    if(time){
-      const exerciseDiary = await this.exerciseDiaryRepository.findOne({where: {id:id, date_entered:time}})
-      return exerciseDiary? exerciseDiary: undefined;
-    }
+  async get(id:string): Promise<ExerciseDiary | null>{
 
-    const exerciseDiary = await this.exerciseDiaryRepository.findOne({where:{id:id}, order:{date_entered:'DESC'}})
+    return this.exerciseDiaryRepository.findOneByOrFail({id:id})
 
-    return exerciseDiary? exerciseDiary : undefined;
   }
 
   async getAll(user_id: string): Promise<ExerciseDiary[] | null>{
@@ -41,13 +36,13 @@ export class ExerciseDiaryService {
     return exerciseDiaries;
   }
 
-  // async update(id:string, updateExerciseDiaryDTO: UpdateExerciseDiaryDTO): Promise<ExerciseDiary | null>{
-  //   const exerciseDiary = await this.exerciseDiaryRepository.findOneByOrFail({id:id})
+  async update(id:string, updateExerciseDiaryDTO: UpdateExerciseDiaryDTO): Promise<ExerciseDiary | null>{
+    const exerciseDiary = await this.exerciseDiaryRepository.findOneByOrFail({id:id})
 
-  //   this.exerciseDiaryRepository.merge(exerciseDiary, updateExerciseDiaryDTO)
+    this.exerciseDiaryRepository.merge(exerciseDiary, updateExerciseDiaryDTO)
 
-  //   return this.exerciseDiaryRepository.save(exerciseDiary);
-  // }
+    return this.exerciseDiaryRepository.save(exerciseDiary);
+  }
   
 
 }
