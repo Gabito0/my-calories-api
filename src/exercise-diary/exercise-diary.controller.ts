@@ -18,13 +18,13 @@ export class ExerciseDiaryController {
   } 
 
   @Get(":id")
-  getUserExerciseDiary(@Param() id:string, @Query() date:Date | null){
-    return this.exerciseDiaryService.get(id, date);
+  getUserExerciseDiary(@Param('id') id:string){
+    return this.exerciseDiaryService.get(id);
   }
-  // @Patch(":id")
-  // updateExerciseDiary(@Body() updateExerciseDiaryDTO:UpdateExerciseDiaryDTO){
-  //   return this.exerciseDiaryService.update(updateExerciseDiaryDTO)
-  // }
+  @Patch(":id")
+  updateExerciseDiary(@Param('id') id:string,@Body() updateExerciseDiaryDTO:UpdateExerciseDiaryDTO){
+    return this.exerciseDiaryService.update(id,updateExerciseDiaryDTO)
+  }
 
 
 }
