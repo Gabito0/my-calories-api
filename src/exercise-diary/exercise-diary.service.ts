@@ -24,19 +24,19 @@ export class ExerciseDiaryService {
   }
 
   
-  async get(id:string, time:Date): Promise<ExerciseDiary | undefined>{
+  async get(id:string, time:Date | null): Promise<ExerciseDiary | undefined>{
     if(time){
-      const exerciseDiary = await this.exerciseDiaryRepository.findOne({where: {id:id, start_time:time}})
+      const exerciseDiary = await this.exerciseDiaryRepository.findOne({where: {id:id, date_entered:time}})
       return exerciseDiary? exerciseDiary: undefined;
     }
 
-    const exerciseDiary = await this.exerciseDiaryRepository.findOne({where:{id:id}, order:{start_time:'DESC'}})
+    const exerciseDiary = await this.exerciseDiaryRepository.findOne({where:{id:id}, order:{date_entered:'DESC'}})
 
     return exerciseDiary? exerciseDiary : undefined;
   }
 
   async getAll(user_id: string): Promise<ExerciseDiary[] | null>{
-    const exerciseDiaries = this.exerciseDiaryRepository.find({where:{user_id:user_id}, order:{start_time:'DESC'}});
+    const exerciseDiaries = this.exerciseDiaryRepository.find({where:{user_id:user_id}, order:{date_entered:'DESC'}});
 
     return exerciseDiaries;
   }
