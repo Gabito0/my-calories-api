@@ -12,11 +12,8 @@ export class ExerciseDiary {
   @Column()
   user_id!:string;
 
-  @Column({type:'date'})
-  start_time!:Date;
-
-  @Column({type:'date'})
-  end_time!:Date
+  @Column({type:'date', unique:true})
+  date_entered!:Date
 
   @Column({type:'text'})
   notes!: string;
