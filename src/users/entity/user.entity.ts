@@ -1,4 +1,5 @@
-import { ExerciseDiary } from "src/exercise-diaries/entity/exercise-diary.entity";
+import { ExerciseDiary } from "@/exercise-diaries/entity/exercise-diary.entity";
+import {ExerciseLog} from "@/exercise-logs/entity/exercise-log.entity"
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'users'})
@@ -23,5 +24,8 @@ export class User{
 
   @OneToMany(()=> ExerciseDiary, (exerciseDiary)=>exerciseDiary.user)
   exerciseDiaries!: ExerciseDiary[]
+
+  @OneToMany(()=>ExerciseLog,(exerciseLog)=>exerciseLog.user)
+  exerciseLogs!:ExerciseLog[]
 
 }
