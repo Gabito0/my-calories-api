@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "../../users/entity/user.entity";
+import { ExerciseLog } from "@/exercise-logs/entity/exercise-log.entity";
 @Entity({name: 'exercise_diaries'})
 export class ExerciseDiary {
   @PrimaryGeneratedColumn('uuid')
@@ -18,7 +19,8 @@ export class ExerciseDiary {
   @Column({type:'text'})
   notes!: string;
   
- 
+  @OneToMany(()=>ExerciseLog,(exerciseLog)=>exerciseLog.exerciseDiary)
+  exerciseLogs!:ExerciseLog[]
   
 
 }
