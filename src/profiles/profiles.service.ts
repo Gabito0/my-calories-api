@@ -1,6 +1,6 @@
 import { Injectable, UseGuards } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Profile } from './entity/profiles.entity';
+import { Profile } from './entity/profile.entity';
 import { Repository } from 'typeorm';
 import { SetupProfileDTO } from './dto/setup-profile.dto';
 import { UpdateProfileDTO } from './dto/update-profile.dto';

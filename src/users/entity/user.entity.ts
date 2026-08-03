@@ -1,4 +1,4 @@
-import { ExerciseDiary } from "src/exercise-diary/entity/exercise-diary.entity";
+import { ExerciseDiary } from "src/exercise-diaries/entity/exercise-diary.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'users'})

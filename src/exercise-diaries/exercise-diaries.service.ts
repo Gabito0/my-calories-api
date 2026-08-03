@@ -4,9 +4,8 @@ import { ExerciseDiary } from './entity/exercise-diary.entity';
 import { Repository } from 'typeorm';
 import { CreateExerciseDiaryDTO } from './dto/create-exercise-diary.dto';
 import { UpdateExerciseDiaryDTO } from './dto/update-exercise-diary.dto';
-import { User } from 'src/users/entity/users.entity';
 @Injectable()
-export class ExerciseDiaryService {
+export class ExerciseDiariesService {
 
   constructor(
     @InjectRepository(ExerciseDiary)
