@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "../../users/entity/users.entity";
-@Entity({name: 'exercise_diary'})
+import { User } from "../../users/entity/user.entity";
+@Entity({name: 'exercise_diaries'})
 export class ExerciseDiary {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
